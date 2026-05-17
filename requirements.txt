@@ -11,3 +11,4 @@ streamlit
 opencv-python-headless
 plotly
 pillow
+gdown
