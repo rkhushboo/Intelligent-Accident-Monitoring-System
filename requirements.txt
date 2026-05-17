@@ -8,6 +8,6 @@ scikit-learn
 seaborn
 tensorflow
 streamlit
-opencv-python
+opencv-python-headless
 plotly
 pillow
