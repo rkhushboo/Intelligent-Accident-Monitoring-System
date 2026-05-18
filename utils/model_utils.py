@@ -6,17 +6,34 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-MODEL_PATH = "best_model.h5"
+# Google Drive model setup
+MODEL_PATH = "models/best_model_vgg.h5"
 
-@st.cache_resource
-def load_cnn_model(model_path: str = MODEL_PATH):
-    if not os.path.exists(model_path):
-        return None, {
-            "status": "missing",
-            "message": f"Model file not found at {model_path}. Place the trained .h5 model in the project root."
-        }
-    model = load_model(model_path, compile=False)
-    return model, {"status": "loaded", "message": f"Loaded model from {model_path}."}
+# Paste your Google Drive FILE ID here
+FILE_ID = "1n6RClhmQcWuG5p2HHonIuYK8rlexqWpl"
+
+# Download URL
+DOWNLOAD_URL = f"https://drive.google.com/uc?id={FILE_ID}"
+
+
+def download_model():
+    """
+    Download model from Google Drive if not available locally
+    """
+
+    os.makedirs("models", exist_ok=True)
+
+    if not os.path.exists(MODEL_PATH):
+
+        st.info("Downloading CNN model from Google Drive...")
+
+        gdown.download(
+            DOWNLOAD_URL,
+            MODEL_PATH,
+            quiet=False
+        )
+
+        st.success("Model downloaded successfully!")
 
 @st.cache_data
 def load_model_status():
