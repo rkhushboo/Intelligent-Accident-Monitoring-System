@@ -12,7 +12,7 @@ from tensorflow.keras.utils import image_dataset_from_directory
 
 DATASET_FOLDER_ID = "1p-vDa8PnHlPrVj5uzKRwdoRlHGoPGKZf"
 
-DATASET_PATH = "datasets/data"
+DATASET_PATH = "datasets"
 
 
 def download_dataset():
