@@ -35,6 +35,26 @@ def download_model():
         )
 
         st.success("Model downloaded successfully!")
+        
+@st.cache_resource
+def load_cnn_model(model_path: str = MODEL_PATH):
+
+    try:
+        download_model()
+
+        model = load_model(model_path, compile=False)
+
+        return model, {
+            "status": "loaded",
+            "message": f"Loaded model from {model_path}."
+        }
+
+    except Exception as e:
+
+        return None, {
+            "status": "missing",
+            "message": f"Error loading model: {str(e)}"
+        }
 
 @st.cache_data
 def load_model_status():
