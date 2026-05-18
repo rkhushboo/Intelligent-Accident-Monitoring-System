@@ -2,11 +2,13 @@ import streamlit as st
 from utils.ui_utils import load_css, render_hero_banner, render_impact_cards
 from utils.data_utils import get_dataset_summary, load_sample_images
 from utils.model_utils import load_cnn_model, load_model_status
+from utils.data_utils import download_dataset
 
 st.set_page_config(page_title="Intelligent Accident Monitoring System", page_icon="🚨", layout="wide")
 load_css()
 
 model, model_status = load_cnn_model()
+download_dataset()
 summary = get_dataset_summary()
 samples = load_sample_images(n_samples=3)
 
