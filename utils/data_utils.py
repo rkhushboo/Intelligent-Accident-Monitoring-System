@@ -23,16 +23,13 @@ def download_dataset():
 
     os.makedirs(DATASET_PATH, exist_ok=True)
 
-    st.info("Downloading dataset from Google Drive...")
-
     gdown.download_folder(
         id=DATASET_FOLDER_ID,
         output=DATASET_PATH,
         quiet=False
     )
 
-    st.success("Dataset downloaded successfully!")
-
+    
 DATA_ROOT = "datasets/data"
 
 @st.cache_data
