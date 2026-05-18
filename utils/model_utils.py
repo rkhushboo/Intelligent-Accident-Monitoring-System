@@ -26,7 +26,7 @@ def download_model():
 
     if not os.path.exists(MODEL_PATH):
 
-        st.info("Downloading CNN model from Google Drive...")
+        
 
         gdown.download(
             DOWNLOAD_URL,
@@ -34,7 +34,7 @@ def download_model():
             quiet=False
         )
 
-        st.success("Model downloaded successfully!")
+        
         
 @st.cache_resource
 def load_cnn_model(model_path: str = MODEL_PATH):
