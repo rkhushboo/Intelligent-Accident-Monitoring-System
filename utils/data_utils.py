@@ -1,4 +1,5 @@
 import os
+import gdown
 import glob
 import random
 import pandas as pd
@@ -8,6 +9,29 @@ from pathlib import Path
 from sklearn.metrics import (accuracy_score, precision_score, recall_score,
                              f1_score, confusion_matrix, roc_auc_score)
 from tensorflow.keras.utils import image_dataset_from_directory
+
+DATASET_FOLDER_ID = "1p-vDa8PnHlPrVj5uzKRwdoRlHGoPGKZf"
+
+DATASET_PATH = "datasets/data"
+
+
+def download_dataset():
+
+    # Skip download if dataset already exists
+    if os.path.exists(DATASET_PATH) and len(os.listdir(DATASET_PATH)) > 0:
+        return
+
+    os.makedirs(DATASET_PATH, exist_ok=True)
+
+    st.info("Downloading dataset from Google Drive...")
+
+    gdown.download_folder(
+        id=DATASET_FOLDER_ID,
+        output=DATASET_PATH,
+        quiet=False
+    )
+
+    st.success("Dataset downloaded successfully!")
 
 DATA_ROOT = "datasets/data"
 
