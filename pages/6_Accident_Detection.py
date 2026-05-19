@@ -34,9 +34,11 @@ if mode == "Image":
                 progress_bar = st.progress(int(score * 100))
                 progress_bar.progress(int(score * 100))
                 if score >= 0.5:
-                    st.markdown(f"<div class='predict-alert danger'><strong>High risk detected:</strong> emergency response recommended.</div>", unsafe_allow_html=True)
-                else:
                     st.markdown(f"<div class='predict-alert success'><strong>Safe scene:</strong> no accident patterns detected.</div>", unsafe_allow_html=True)
+                else:
+                    st.markdown(f"<div class='predict-alert danger'><strong>High risk detected:</strong> emergency response recommended.</div>", unsafe_allow_html=True)
+
+                                     
                 st.write(f"**Confidence:** {confidence}")
             except Exception as exc:
                 st.error(f"Prediction failed: {exc}")
