@@ -82,7 +82,8 @@ def predict_image(image_array, model):
         return "Model missing", 0.0
     x = np.expand_dims(image_array, axis=0)
     score = float(model.predict(x, verbose=0).reshape(-1)[0])
-    label = "Accident Detected" if score >= 0.5 else "No Accident Detected"
+    label = "No Accident Detected" if score >= 0.5 else "Accident Detected"
+    
     return label, score
 
 def analyze_video_upload(uploaded_file, model, sample_frames=5):
