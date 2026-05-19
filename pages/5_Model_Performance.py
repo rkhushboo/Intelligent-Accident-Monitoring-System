@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 from utils.ui_utils import load_css
 from utils.data_utils import compute_validation_metrics
 from utils.model_utils import load_cnn_model
+from utils.data_utils import download_dataset
 
 st.set_page_config(page_title="Model Performance | Intelligent Accident Monitoring System", page_icon="📈", layout="wide")
 load_css()
